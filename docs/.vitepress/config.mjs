@@ -1,12 +1,13 @@
 import { defineConfig } from "vitepress"
 
 export default defineConfig({
+  base: "/Quiz-Caju-Server-Api/",
   lang: "pt-BR",
   title: "QuizCaju API",
   description: "API de perguntas em português para o QuizCaju",
 
   head: [
-    ["link", { rel: "icon", href: "/favicon.ico" }]
+    ["link", { rel: "icon", href: "/Quiz-Caju-Server-Api/favicon.ico" }]
   ],
 
   themeConfig: {
