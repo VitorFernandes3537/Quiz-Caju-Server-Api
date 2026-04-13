@@ -1,0 +1,300 @@
+[
+{
+  "id": 1,
+  "nome": "Tecnologia",
+  "perguntas": [
+    {
+      "question": "O que significa a sigla HTML?",
+      "correct_answer": "HyperText Markup Language",
+      "incorrect_answers": [
+        "HyperText Machine Language",
+        "HighText Markup Language",
+        "HyperTool Markup Language"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual tag HTML define o título mais importante de uma página?",
+      "correct_answer": "<h1>",
+      "incorrect_answers": ["<title>", "<header>", "<strong>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual tag HTML é usada para criar um link?",
+      "correct_answer": "<a>",
+      "incorrect_answers": ["<link>", "<href>", "<url>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual atributo define o endereço de destino de um link em HTML?",
+      "correct_answer": "href",
+      "incorrect_answers": ["src", "url", "link"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual tag HTML cria uma lista não ordenada?",
+      "correct_answer": "<ul>",
+      "incorrect_answers": ["<ol>", "<li>", "<list>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual tag HTML é usada para inserir uma imagem?",
+      "correct_answer": "<img>",
+      "incorrect_answers": ["<image>", "<picture>", "<src>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual atributo da tag <img> define o texto alternativo da imagem?",
+      "correct_answer": "alt",
+      "incorrect_answers": ["title", "description", "label"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual tag HTML define um parágrafo?",
+      "correct_answer": "<p>",
+      "incorrect_answers": ["<par>", "<paragraph>", "<text>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Dentro de qual tag HTML fica o conteúdo visível da página?",
+      "correct_answer": "<body>",
+      "incorrect_answers": ["<head>", "<main>", "<html>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual tag HTML é usada para criar um botão clicável?",
+      "correct_answer": "<button>",
+      "incorrect_answers": ["<click>", "<input>", "<press>"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Como se seleciona um elemento pela sua classe no CSS?",
+      "correct_answer": ".minha-classe",
+      "incorrect_answers": ["#minha-classe", "*minha-classe", "@minha-classe"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Como se seleciona um elemento pelo seu ID no CSS?",
+      "correct_answer": "#meu-id",
+      "incorrect_answers": [".meu-id", "*meu-id", "&meu-id"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS muda a cor do texto?",
+      "correct_answer": "color",
+      "incorrect_answers": ["text-color", "font-color", "foreground"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS muda a cor de fundo de um elemento?",
+      "correct_answer": "background-color",
+      "incorrect_answers": ["bg-color", "color-background", "fill"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual valor de display ativa o Flexbox em um elemento CSS?",
+      "correct_answer": "flex",
+      "incorrect_answers": ["block", "inline", "grid"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS arredonda as bordas de um elemento?",
+      "correct_answer": "border-radius",
+      "incorrect_answers": ["border-style", "border-curve", "border-round"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS controla o espaçamento interno de um elemento?",
+      "correct_answer": "padding",
+      "incorrect_answers": ["margin", "spacing", "gap"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS controla o espaçamento externo de um elemento?",
+      "correct_answer": "margin",
+      "incorrect_answers": ["padding", "spacing", "border"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS define o tamanho da fonte?",
+      "correct_answer": "font-size",
+      "incorrect_answers": ["text-size", "font-weight", "letter-size"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual propriedade CSS torna um elemento invisível mas mantém o espaço que ele ocupa?",
+      "correct_answer": "visibility: hidden",
+      "incorrect_answers": ["display: none", "opacity: 0", "hidden: true"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual palavra-chave do JavaScript declara uma variável que não pode ser reatribuída?",
+      "correct_answer": "const",
+      "incorrect_answers": ["var", "let", "fixed"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual método JavaScript seleciona um elemento HTML pelo seu ID?",
+      "correct_answer": "document.getElementById()",
+      "incorrect_answers": [
+        "document.getElement()",
+        "document.selectId()",
+        "document.findById()"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "O que o método addEventListener() faz em JavaScript?",
+      "correct_answer": "Registra uma função para ser executada quando um evento ocorre",
+      "incorrect_answers": [
+        "Remove um elemento do DOM",
+        "Cria um novo elemento HTML",
+        "Faz uma requisição para uma API"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "O que é o DOM em JavaScript?",
+      "correct_answer": "Uma representação em árvore dos elementos HTML da página",
+      "incorrect_answers": [
+        "Um banco de dados do navegador",
+        "Uma linguagem de estilização",
+        "Um protocolo de comunicação"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual estrutura JavaScript é usada para repetir um bloco de código um número conhecido de vezes?",
+      "correct_answer": "for",
+      "incorrect_answers": ["while", "if", "switch"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "O que o método push() faz em um array JavaScript?",
+      "correct_answer": "Adiciona um item no final do array",
+      "incorrect_answers": [
+        "Remove o último item do array",
+        "Adiciona um item no início do array",
+        "Ordena os itens do array"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "O que o método indexOf() retorna quando o item não é encontrado no array?",
+      "correct_answer": "-1",
+      "incorrect_answers": ["0", "null", "undefined"],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Como se cria uma função em JavaScript?",
+      "correct_answer": "function nomeDaFuncao() {}",
+      "incorrect_answers": [
+        "def nomeDaFuncao() {}",
+        "func nomeDaFuncao() {}",
+        "create function nomeDaFuncao() {}"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "O que a palavra-chave return faz dentro de uma função JavaScript?",
+      "correct_answer": "Encerra a função e devolve um valor para quem a chamou",
+      "incorrect_answers": [
+        "Repete a execução da função",
+        "Imprime um valor no console",
+        "Declara uma variável local"
+      ],
+      "category": "Tecnologia"
+    },
+    {
+      "question": "Qual método JavaScript é usado para imprimir uma mensagem no console do navegador?",
+      "correct_answer": "console.log()",
+      "incorrect_answers": ["print()", "document.write()", "alert.log()"],
+      "category": "Tecnologia"
+    }
+  ]
+},
+  {
+    "id": 2,
+    "nome": "Geografia do Brasil",
+    "perguntas": [
+      {
+        "question": "Qual é a capital do Brasil?",
+        "correct_answer": "Brasília",
+        "incorrect_answers": ["São Paulo", "Rio de Janeiro", "Salvador"],
+        "category": "Geografia do Brasil"
+      },
+      {
+        "question": "Qual é o maior estado do Brasil em extensão territorial?",
+        "correct_answer": "Amazonas",
+        "incorrect_answers": ["Pará", "Mato Grosso", "Minas Gerais"],
+        "category": "Geografia do Brasil"
+      },
+      {
+        "question": "Em qual estado brasileiro fica o Parque Nacional da Chapada Diamantina?",
+        "correct_answer": "Bahia",
+        "incorrect_answers": ["Minas Gerais", "Goiás", "Ceará"],
+        "category": "Geografia do Brasil"
+      },
+      {
+        "question": "Qual rio é o mais extenso inteiramente dentro do território brasileiro?",
+        "correct_answer": "Rio Araguaia",
+        "incorrect_answers": ["Rio São Francisco", "Rio Paraná", "Rio Negro"],
+        "category": "Geografia do Brasil"
+      },
+      {
+        "question": "Qual é a cidade mais populosa do Brasil?",
+        "correct_answer": "São Paulo",
+        "incorrect_answers": ["Rio de Janeiro", "Brasília", "Salvador"],
+        "category": "Geografia do Brasil"
+      },
+      {
+        "question": "Em qual estado brasileiro fica a Serra da Capivara, patrimônio da humanidade?",
+        "correct_answer": "Piauí",
+        "incorrect_answers": ["Bahia", "Pernambuco", "Ceará"],
+        "category": "Geografia do Brasil"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Cultura Pop",
+    "perguntas": [
+      {
+        "question": "Qual anime tem o personagem Naruto Uzumaki como protagonista?",
+        "correct_answer": "Naruto",
+        "incorrect_answers": ["Dragon Ball", "One Piece", "Bleach"],
+        "category": "Cultura Pop"
+      },
+      {
+        "question": "Em qual série de jogos o personagem Link é o protagonista?",
+        "correct_answer": "The Legend of Zelda",
+        "incorrect_answers": ["Final Fantasy", "Dark Souls", "Metroid"],
+        "category": "Cultura Pop"
+      },
+      {
+        "question": "Qual banda brasileira lançou o álbum 'Documento' em 1974?",
+        "correct_answer": "MPB-4",
+        "incorrect_answers": ["Os Mutantes", "Novos Baianos", "Secos & Molhados"],
+        "category": "Cultura Pop"
+      },
+      {
+        "question": "Em qual filme a personagem Simba precisa recuperar o reino de seu pai?",
+        "correct_answer": "O Rei Leão",
+        "incorrect_answers": ["Bambi", "Tarzan", "A Bela e a Fera"],
+        "category": "Cultura Pop"
+      },
+      {
+        "question": "Qual personagem da Marvel carrega o escudo vibranium?",
+        "correct_answer": "Capitão América",
+        "incorrect_answers": ["Thor", "Homem de Ferro", "Pantera Negra"],
+        "category": "Cultura Pop"
+      },
+      {
+        "question": "De qual país é originário o estilo musical K-pop?",
+        "correct_answer": "Coreia do Sul",
+        "incorrect_answers": ["Japão", "China", "Tailândia"],
+        "category": "Cultura Pop"
+      }
+    ]
+  }
+]

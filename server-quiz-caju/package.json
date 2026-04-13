@@ -1,0 +1,15 @@
+{
+  "name": "quizcaju-api",
+  "version": "1.0.0",
+  "description": "API de perguntas em português para o QuizCaju",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
