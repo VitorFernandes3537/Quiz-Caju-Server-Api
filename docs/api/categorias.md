@@ -1,14 +1,14 @@
 # GET /categorias
 
-Retorna a lista completa de categorias disponíveis com seus IDs e total de perguntas.
-Use esta rota para descobrir quais IDs passar no parâmetro `category` de `GET /perguntas`.
+Lista todas as categorias disponíveis com seus IDs e total de perguntas.
+Use esta rota para descobrir quais IDs passar no parâmetro `category`.
 
 ---
 
-## Endpoint
+## URL base
 
 ```
-GET /categorias
+https://quiz-caju-server-api.vercel.app/categorias
 ```
 
 ---
@@ -19,17 +19,23 @@ Esta rota não aceita parâmetros.
 
 ---
 
-## Exemplo
+## Teste agora
 
+Cole no navegador:
 ```
-GET /categorias
+https://quiz-caju-server-api.vercel.app/categorias
+```
+
+Ou no console do DevTools:
+```js
+fetch("https://quiz-caju-server-api.vercel.app/categorias")
+  .then(function(r) { return r.json() })
+  .then(function(dados) { console.log(dados.categorias) })
 ```
 
 ---
 
 ## Resposta
-
-### 200 — Sucesso
 
 ```json
 {
@@ -57,42 +63,28 @@ GET /categorias
 
 ## Campos da resposta
 
-| Campo             | Tipo   | Descrição |
-|-------------------|--------|-----------|
-| `id`              | número | Identificador da categoria. Use no parâmetro `category` de `GET /perguntas`. |
-| `nome`            | string | Nome legível da categoria |
-| `total_perguntas` | número | Quantidade de perguntas disponíveis nesta categoria |
+| Campo             | Tipo   | O que é                                                       |
+|-------------------|--------|---------------------------------------------------------------|
+| `id`              | número | Use esse número no parâmetro `category` de `GET /perguntas`   |
+| `nome`            | string | Nome legível da categoria                                     |
+| `total_perguntas` | número | Quantas perguntas existem nessa categoria                     |
 
 ---
 
 ## Usando o ID na prática
 
-Após listar as categorias, use o `id` para filtrar perguntas:
-
-```
-# Buscar 5 perguntas da categoria com id 2 (Geografia do Brasil)
-GET /perguntas?amount=5&category=2&encode=base64
-```
-
----
-
-## No questions.js do QuizCaju
-
-Cada objeto do array `FONTES` usa um ID de categoria:
-
 ```js
-const FONTES = [
-  {
-    url: "https://quizcaju-api.vercel.app/perguntas?amount=5&category=1&encode=base64",
-    categoria: "Tecnologia"           // id: 1
-  },
-  {
-    url: "https://quizcaju-api.vercel.app/perguntas?amount=5&category=2&encode=base64",
-    categoria: "Geografia do Brasil"  // id: 2
-  },
-  {
-    url: "https://quizcaju-api.vercel.app/perguntas?amount=5&category=3&encode=base64",
-    categoria: "Cultura Pop"          // id: 3
-  }
-]
+// Primeiro, descubra os IDs disponíveis
+fetch("https://quiz-caju-server-api.vercel.app/categorias")
+  .then(function(r) { return r.json() })
+  .then(function(dados) {
+    dados.categorias.forEach(function(c) {
+      console.log("ID:", c.id, "→", c.nome)
+    })
+  })
+
+// Depois, use o ID para buscar perguntas de uma categoria específica
+fetch("https://quiz-caju-server-api.vercel.app/perguntas?amount=5&category=2")
+  .then(function(r) { return r.json() })
+  .then(function(dados) { console.log(dados.results) })
 ```

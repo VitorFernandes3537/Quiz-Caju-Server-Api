@@ -1,49 +1,56 @@
 # GET /perguntas
 
-Retorna um array de perguntas aleatórias no formato compatível com o `questions.js` do QuizCaju.
+Retorna perguntas aleatórias no formato compatível com o `questions.js` do QuizCaju.
 
 ---
 
-## Endpoint
+## URL base
 
 ```
-GET /perguntas
+https://quiz-caju-server-api.vercel.app/perguntas
 ```
 
 ---
 
 ## Parâmetros
 
-| Parâmetro  | Tipo    | Obrigatório | Padrão | Descrição |
-|------------|---------|-------------|--------|-----------|
-| `amount`   | número  | não         | `10`   | Quantidade de perguntas a retornar |
-| `category` | número  | não         | —      | ID da categoria. Sem este parâmetro, retorna de todas. Use `GET /categorias` para ver os IDs. |
-| `encode`   | string  | não         | —      | Se `base64`, todos os textos são codificados em Base64 |
+| Parâmetro  | Tipo   | Obrigatório | Padrão | O que faz                                              |
+|------------|--------|-------------|--------|--------------------------------------------------------|
+| `amount`   | número | não         | `10`   | Quantas perguntas retornar                             |
+| `category` | número | não         | —      | ID da categoria. Sem isso, retorna de todas.           |
+| `encode`   | string | não         | —      | Se `base64`, os textos chegam codificados em Base64    |
 
 ---
 
-## Exemplos
+## Exemplos prontos para testar
 
-**10 perguntas aleatórias de todas as categorias:**
+Cole no navegador ou no console do DevTools:
+
+**10 perguntas aleatórias:**
 ```
-GET /perguntas?amount=10
+https://quiz-caju-server-api.vercel.app/perguntas
 ```
 
 **5 perguntas de Tecnologia:**
 ```
-GET /perguntas?amount=5&category=1
+https://quiz-caju-server-api.vercel.app/perguntas?amount=5&category=1
 ```
 
-**5 perguntas de Tecnologia codificadas em Base64:**
+**5 perguntas de Tecnologia em Base64** (formato para o QuizCaju):
 ```
-GET /perguntas?amount=5&category=1&encode=base64
+https://quiz-caju-server-api.vercel.app/perguntas?amount=5&category=1&encode=base64
+```
+
+**Teste no console do navegador:**
+```js
+fetch("https://quiz-caju-server-api.vercel.app/perguntas?amount=3&category=1")
+  .then(function(r) { return r.json() })
+  .then(function(dados) { console.log(dados.results) })
 ```
 
 ---
 
-## Respostas
-
-### 200 — Sucesso
+## Resposta de sucesso
 
 ```json
 {
@@ -63,7 +70,7 @@ GET /perguntas?amount=5&category=1&encode=base64
 }
 ```
 
-Com `encode=base64`, todos os campos de texto chegam codificados:
+Com `encode=base64` os textos chegam assim — o `decodificarBase64()` do QuizCaju desfaz automaticamente:
 
 ```json
 {
@@ -72,21 +79,18 @@ Com `encode=base64`, todos os campos de texto chegam codificados:
     {
       "question": "TyBxdWUgc2lnbmlmaWNhIGEgc2lnbGEgSFRNTD8=",
       "correct_answer": "SHlwZXJUZXh0IE1hcmt1cCBMYW5ndWFnZQ==",
-      "incorrect_answers": [
-        "SHlwZXJUZXh0IE1hY2hpbmUgTGFuZ3VhZ2U=",
-        "SGlnaFRleHQgTWFya3VwIExhbmd1YWdl",
-        "SHlwZXJUb29sIE1hcmt1cCBMYW5ndWFnZQ=="
-      ],
+      "incorrect_answers": ["...", "...", "..."],
       "category": "VGVjbm9sb2dpYQ=="
     }
   ]
 }
 ```
 
-### 400 — Parâmetro inválido
+---
 
-Retornado quando `amount` não é um número válido:
+## Respostas de erro
 
+**400 — amount inválido:**
 ```json
 {
   "response_code": 2,
@@ -94,10 +98,7 @@ Retornado quando `amount` não é um número válido:
 }
 ```
 
-### 404 — Categoria não encontrada
-
-Retornado quando o `category` informado não existe:
-
+**404 — categoria não encontrada:**
 ```json
 {
   "response_code": 1,
@@ -107,29 +108,10 @@ Retornado quando o `category` informado não existe:
 
 ---
 
-## Códigos de response_code
+## Tabela de response_code
 
 | Código | Significado              |
 |--------|--------------------------|
 | `0`    | Sucesso                  |
 | `1`    | Categoria não encontrada |
 | `2`    | Parâmetro inválido       |
-
----
-
-## Sobre o encode=base64
-
-O português tem muitos acentos e caracteres especiais.
-Sem codificação, comparações de strings como `.indexOf()` podem falhar silenciosamente.
-
-O parâmetro `encode=base64` faz o servidor codificar cada campo com `Buffer.from(str).toString("base64")` antes de enviar.
-
-No `questions.js` do QuizCaju, a função `decodificarBase64()` desfaz essa codificação automaticamente usando `atob()`.
-
-::: tip No console do navegador
-Para decodificar manualmente e verificar o conteúdo de uma string Base64:
-```js
-atob("TyBxdWUgc2lnbmlmaWNhIGEgc2lnbGEgSFRNTD8=")
-// → "O que significa a sigla HTML?"
-```
-:::

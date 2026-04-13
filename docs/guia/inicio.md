@@ -1,102 +1,119 @@
-# Rodando localmente
+# Primeiros passos
 
-Antes de colocar a API no ar, vamos garantir que ela funciona na sua máquina.
-
-## Pré-requisitos
-
-Você precisa ter o Node.js instalado. Para verificar, abra o terminal e rode:
-
-```bash
-node -v
-npm -v
-```
-
-Se aparecer um número de versão em cada linha, está pronto.
-Se não, acesse [nodejs.org](https://nodejs.org) e instale a versão LTS.
+Você não precisa instalar nada para começar a usar a API.
+Ela já está no ar. É só chamar a URL.
 
 ---
 
-## Passo 1 — Clonar o repositório
+## Testando direto no navegador
 
-```bash
-git clone https://github.com/seu-usuario/quizcaju-api.git
-cd quizcaju-api
+Cole qualquer uma dessas URLs na barra de endereço e aperte Enter:
+
+**Listar as categorias disponíveis:**
+```
+https://quiz-caju-server-api.vercel.app/categorias
+```
+
+**5 perguntas de Tecnologia:**
+```
+https://quiz-caju-server-api.vercel.app/perguntas?amount=5&category=1
+```
+
+**10 perguntas aleatórias de todas as categorias:**
+```
+https://quiz-caju-server-api.vercel.app/perguntas?amount=10
+```
+
+O navegador vai exibir o JSON diretamente na tela.
+Se quiser ver mais bonito, instale a extensão [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa) no Chrome.
+
+---
+
+## Testando no console do navegador
+
+Abra qualquer página, pressione `F12` para abrir o DevTools,
+clique na aba **Console** e cole o código abaixo:
+
+```js
+fetch("https://quiz-caju-server-api.vercel.app/perguntas?amount=3&category=1")
+  .then(function(resposta) { return resposta.json() })
+  .then(function(dados) { console.log(dados) })
+```
+
+Pressione Enter. Você vai ver o objeto JSON aparecer no console.
+
+Para ver só as perguntas:
+
+```js
+fetch("https://quiz-caju-server-api.vercel.app/perguntas?amount=3&category=1")
+  .then(function(r) { return r.json() })
+  .then(function(dados) {
+    dados.results.forEach(function(p) {
+      console.log(p.question)
+      console.log("Correta:", p.correct_answer)
+      console.log("---")
+    })
+  })
 ```
 
 ---
 
-## Passo 2 — Instalar as dependências
+## Entendendo o que a API responde
 
+Toda resposta tem esse formato:
+
+```json
+{
+  "response_code": 0,
+  "results": [
+    {
+      "question": "O que significa a sigla HTML?",
+      "correct_answer": "HyperText Markup Language",
+      "incorrect_answers": [
+        "HyperText Machine Language",
+        "HighText Markup Language",
+        "HyperTool Markup Language"
+      ],
+      "category": "Tecnologia"
+    }
+  ]
+}
+```
+
+| Campo              | O que é                                          |
+|--------------------|--------------------------------------------------|
+| `response_code`    | `0` = sucesso. Outro número = algum problema.    |
+| `results`          | Array com as perguntas que você pediu            |
+| `question`         | O texto da pergunta                              |
+| `correct_answer`   | A resposta correta                               |
+| `incorrect_answers`| Array com 3 respostas erradas                    |
+| `category`         | Nome da categoria                                |
+
+---
+
+## Rodando localmente
+
+Se quiser rodar o servidor na sua máquina:
+
+**1 — Clone o repositório:**
+```bash
+git clone https://github.com/VitorFernandes3537/Quiz-Caju-Server-Api.git
+cd Quiz-Caju-Server-Api/server-quiz-caju
+```
+
+**2 — Instale as dependências:**
 ```bash
 npm install
 ```
 
-Isso vai criar a pasta `node_modules/` com tudo que o projeto precisa para rodar.
-Essa pasta nunca vai para o GitHub — ela está no `.gitignore`.
-
----
-
-## Passo 3 — Iniciar o servidor
-
+**3 — Inicie o servidor:**
 ```bash
 node server.js
 ```
 
-Se tudo estiver certo, você vai ver no terminal:
+Acesse em `http://localhost:3000`.
 
-```
-QuizCaju API rodando em http://localhost:3000
-Documentação em http://localhost:3000/docs
-```
-
----
-
-## Passo 4 — Testar as rotas
-
-Abra o navegador e acesse cada uma:
-
-**Listar categorias:**
-```
-http://localhost:3000/categorias
-```
-
-**Buscar 5 perguntas de Tecnologia em Base64:**
-```
-http://localhost:3000/perguntas?amount=5&category=1&encode=base64
-```
-
-**Buscar 10 perguntas aleatórias:**
-```
-http://localhost:3000/perguntas?amount=10
-```
-
-**Documentação interativa:**
-```
-http://localhost:3000/docs
-```
-
----
-
-## Entendendo a estrutura do projeto
-
-```
-quizcaju-api/
-├── server.js        ← servidor Express com as rotas
-├── swagger.js       ← configuração da documentação automática
-├── perguntas.json   ← banco de perguntas em português
-├── package.json     ← dependências e scripts do projeto
-├── vercel.json      ← configuração do deploy
-└── .gitignore       ← arquivos que não vão para o GitHub
-```
-
-::: tip node_modules no .gitignore
-A pasta `node_modules/` pode ter centenas de megabytes.
-Ela nunca vai para o GitHub porque o `package.json` já lista tudo que precisa ser instalado.
-Quem clonar o projeto roda `npm install` e o Node baixa tudo automaticamente.
+::: tip Node.js
+Precisa ter o Node.js instalado. Verifique com `node -v` no terminal.
+Se não tiver, baixe em [nodejs.org](https://nodejs.org) — versão LTS.
 :::
-
----
-
-## Parando o servidor
-
-Para parar o servidor, pressione `Ctrl + C` no terminal.

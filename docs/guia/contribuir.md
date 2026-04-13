@@ -1,12 +1,12 @@
 # Adicionando perguntas
 
 O banco de perguntas fica no arquivo `perguntas.json`.
-Qualquer pessoa pode contribuir — seja adicionando perguntas a uma categoria existente
+Qualquer pessoa pode contribuir — adicionando perguntas a uma categoria existente
 ou criando uma categoria nova.
 
 ---
 
-## Entendendo a estrutura do arquivo
+## Estrutura do arquivo
 
 O `perguntas.json` é um array de categorias.
 Cada categoria tem um `id`, um `nome` e um array de `perguntas`:
@@ -32,10 +32,10 @@ Cada categoria tem um `id`, um `nome` e um array de `perguntas`:
 ]
 ```
 
-::: warning Regras do formato
-- `incorrect_answers` deve ter **exatamente 3** itens — nem mais, nem menos
-- O campo `category` dentro de cada pergunta deve ser **idêntico** ao `nome` da categoria
-- Todos os textos devem estar em **português**
+::: warning Regras obrigatórias
+- `incorrect_answers` deve ter **exatamente 3** itens
+- O campo `category` dentro da pergunta deve ser **idêntico** ao `nome` da categoria
+- Todos os textos em **português**
 :::
 
 ---
@@ -44,7 +44,7 @@ Cada categoria tem um `id`, um `nome` e um array de `perguntas`:
 
 1. Abra o `perguntas.json`
 2. Encontre a categoria onde quer adicionar
-3. Adicione um novo objeto no array `perguntas` da categoria:
+3. Adicione um novo objeto no array `perguntas`:
 
 ```json
 {
@@ -60,16 +60,16 @@ Cada categoria tem um `id`, um `nome` e um array de `perguntas`:
 ```
 
 ::: tip Boas perguntas
-- A pergunta deve ter uma única resposta claramente correta
-- As respostas erradas devem ser plausíveis — não óbvias demais
-- Evite perguntas com "Todas as anteriores" ou "Nenhuma das anteriores"
+- Uma única resposta claramente correta
+- Respostas erradas plausíveis — não óbvias demais
+- Evite "Todas as anteriores" ou "Nenhuma das anteriores"
 :::
 
 ---
 
-## Criando uma nova categoria
+## Criando uma categoria nova
 
-Para criar uma categoria nova, adicione um objeto no array raiz do `perguntas.json`:
+Adicione um novo objeto no array raiz do `perguntas.json`:
 
 ```json
 {
@@ -77,12 +77,12 @@ Para criar uma categoria nova, adicione um objeto no array raiz do `perguntas.js
   "nome": "Nome da Nova Categoria",
   "perguntas": [
     {
-      "question": "Primeira pergunta da categoria?",
+      "question": "Primeira pergunta?",
       "correct_answer": "Resposta correta",
       "incorrect_answers": [
-        "Resposta errada 1",
-        "Resposta errada 2",
-        "Resposta errada 3"
+        "Errada 1",
+        "Errada 2",
+        "Errada 3"
       ],
       "category": "Nome da Nova Categoria"
     }
@@ -91,55 +91,29 @@ Para criar uma categoria nova, adicione um objeto no array raiz do `perguntas.js
 ```
 
 ::: warning IDs únicos
-O `id` de cada categoria deve ser um número único.
-Verifique os IDs existentes antes de criar um novo para não haver conflito.
-Use `GET /categorias` para ver os IDs em uso.
+O `id` de cada categoria deve ser único.
+Use `GET /categorias` para ver os IDs em uso antes de criar um novo.
 :::
-
----
-
-## Testando após a adição
-
-Depois de adicionar perguntas, reinicie o servidor e teste:
-
-```bash
-# Pare o servidor com Ctrl+C e inicie novamente
-node server.js
-```
-
-Verifique se o total de perguntas da categoria atualizou:
-
-```
-http://localhost:3000/categorias
-```
-
-Busque perguntas da categoria para confirmar que chegam corretamente:
-
-```
-http://localhost:3000/perguntas?amount=5&category=SEU_ID
-```
 
 ---
 
 ## Contribuindo via pull request
 
-Se quiser contribuir com perguntas para o projeto oficial:
-
 ```bash
-# 1. Faça um fork do repositório no GitHub
+# 1. Fork o repositório no GitHub
 
 # 2. Clone o seu fork
-git clone https://github.com/seu-usuario/quizcaju-api.git
+git clone https://github.com/seu-usuario/Quiz-Caju-Server-Api.git
 
 # 3. Crie uma branch para sua contribuição
-git checkout -b feat/perguntas-historia-do-brasil
+git checkout -b feat/perguntas-historia-brasil
 
 # 4. Edite o perguntas.json e faça commit
-git add perguntas.json
+git add server-quiz-caju/perguntas.json
 git commit -m "adiciona perguntas de historia do Brasil"
 
 # 5. Envie para o seu fork
-git push origin feat/perguntas-historia-do-brasil
+git push origin feat/perguntas-historia-brasil
 
 # 6. Abra um Pull Request no GitHub
 ```

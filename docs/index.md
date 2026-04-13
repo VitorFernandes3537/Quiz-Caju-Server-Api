@@ -4,70 +4,66 @@ layout: home
 hero:
   name: "QuizCaju API"
   text: "Perguntas em português para o seu quiz"
-  tagline: API gratuita, open source, feita por estudantes para estudantes.
+  tagline: Gratuita, open source e feita por estudantes para estudantes do CajuHub.
   actions:
     - theme: brand
       text: Começar agora
       link: /guia/inicio
     - theme: alt
       text: Ver no GitHub
-      link: https://github.com/seu-usuario/quizcaju-api
+      link: https://github.com/VitorFernandes3537/Quiz-Caju-Server-Api
 
 features:
   - icon: 🇧🇷
     title: 100% em português
-    details: Todas as perguntas escritas em português, com categorias relevantes para o público brasileiro.
+    details: Todas as perguntas escritas em português, com categorias relevantes para quem está aprendendo desenvolvimento web.
 
   - icon: ⚡
-    title: Sem cold start
-    details: Hospedada no Vercel. Resposta rápida, sem espera de inicialização.
+    title: Simples de usar
+    details: Duas rotas, zero autenticação. Cole a URL no navegador e veja o JSON chegar. É só isso.
 
   - icon: 🔌
-    title: Compatível com o QuizCaju
-    details: Formato idêntico ao questions.js do projeto. Trocar a URL é a única mudança necessária.
+    title: Feita para o QuizCaju
+    details: O formato de resposta é idêntico ao que o questions.js do QuizCaju já espera. Trocar a URL é a única mudança necessária.
 
-  - icon: 📖
+  - icon: 🤝
     title: Open source
-    details: Qualquer pessoa pode adicionar perguntas ou novas categorias via pull request no GitHub.
+    details: Qualquer pessoa pode adicionar perguntas ou criar novas categorias via pull request no GitHub.
 ---
+
+---
+
+## O que essa API faz?
+
+Ela entrega perguntas de quiz no formato JSON quando você chama uma URL.
+É como um garçom — você faz o pedido, ele traz o prato.
+
+```
+Você chama:
+https://quiz-caju-server-api.vercel.app/perguntas?amount=5&category=1&encode=base64
+
+A API responde:
+{
+  "response_code": 0,
+  "results": [ ...5 perguntas de Tecnologia... ]
+}
+```
+
+---
+
+## Categorias disponíveis
+
+| ID | Categoria           | Perguntas |
+|----|---------------------|-----------|
+| 1  | Tecnologia          | 30        |
+| 2  | Geografia do Brasil | 6         |
+| 3  | Cultura Pop         | 6         |
 
 ---
 
 ## Rotas disponíveis
 
-| Método | Rota          | Descrição                         |
-|--------|---------------|-----------------------------------|
-| GET    | `/perguntas`  | Retorna perguntas aleatórias      |
-| GET    | `/categorias` | Lista todas as categorias         |
-
----
-
-## Exemplo rápido
-
-Buscar 5 perguntas de Tecnologia codificadas em Base64:
-
-```
-GET https://quizcaju-api.vercel.app/perguntas?amount=5&category=1&encode=base64
-```
-
-Resposta:
-
-```json
-{
-  "response_code": 0,
-  "results": [
-    {
-      "question": "TyBxdWUgw6kgbyBET00/",
-      "correct_answer": "VW1hIHJlcHJlc2VudGHDp8OjbyBlbSDDoXJ2b3Jl...",
-      "incorrect_answers": ["...", "...", "..."],
-      "category": "VGVjbm9sb2dpYQ=="
-    }
-  ]
-}
-```
-
-::: tip Por que Base64?
-O parâmetro `encode=base64` garante que acentos e caracteres especiais do português
-não quebrem as comparações no `questions.js`. O `decodificarBase64()` do projeto
-já desfaz a codificação automaticamente.
-:::
+| Método | Rota          | O que faz                    |
+|--------|---------------|------------------------------|
+| GET    | `/perguntas`  | Retorna perguntas aleatórias |
+| GET    | `/categorias` | Lista todas as categorias    |
